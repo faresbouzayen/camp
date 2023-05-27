@@ -14,8 +14,9 @@
 	<name>camp</name>
 	<description>camping project</description>
 	<properties>
-		<java.version>17</java.version>
-	</properties>
+			<maven.compiler.target>11</maven.compiler.target>
+			<maven.compiler.source>11</maven.compiler.source>
+			</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -33,9 +34,8 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.33</version>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
