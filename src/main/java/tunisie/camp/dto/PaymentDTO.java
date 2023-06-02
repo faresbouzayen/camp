@@ -1,21 +1,17 @@
-package tunisie.camp.domain;
+package tunisie.camp.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import tunisie.camp.domain.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-public class Payment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+@Getter
+@Setter
+public class PaymentDTO {
     private long payment_id;
     private double paymentAmount;
     private Date paymentDate;

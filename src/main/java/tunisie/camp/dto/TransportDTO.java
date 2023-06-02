@@ -1,20 +1,19 @@
-package tunisie.camp.domain;
+package tunisie.camp.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import tunisie.camp.domain.Campsite;
+import tunisie.camp.domain.Transportation;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.util.Date;
 import java.util.UUID;
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-public class Transport {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
-    @Column(nullable = false, updatable = false)
+
+@Getter
+@Setter
+public class TransportDTO {
     private UUID transport_id;
     private Transportation transportType;
     private String departureLocation;

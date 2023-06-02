@@ -1,19 +1,14 @@
-package tunisie.camp.domain;
+package tunisie.camp.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import tunisie.camp.domain.Equipment;
 
 import javax.persistence.*;
 import java.util.UUID;
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
-    @Column(nullable = false, updatable = false)
+
+@Getter
+@Setter
+public class ProductDTO {
     private UUID product_id;
     private String productName;
     private String productType;

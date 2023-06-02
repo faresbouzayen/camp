@@ -1,22 +1,16 @@
-package tunisie.camp.domain;
+package tunisie.camp.dto;
 
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import tunisie.camp.domain.Campsite;
+import tunisie.camp.domain.Difficulty;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-public class Activity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
-    @Column(nullable = false, updatable = false)
+@Getter
+@Setter
+public class ActivityDTO {
     private UUID activity_id;
     private String activityName;
     private String description;

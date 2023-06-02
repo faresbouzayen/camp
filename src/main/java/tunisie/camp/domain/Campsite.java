@@ -1,9 +1,15 @@
 package tunisie.camp.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Campsite {
     @Id
