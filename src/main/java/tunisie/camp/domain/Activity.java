@@ -6,27 +6,25 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Activity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private UUID activity_id;
+    private long activity_id;
     private String activityName;
     private String description;
     private int duration;
     private Difficulty difficultyLevel;
-    private Campsite campsiteCount;
     private Date startDate;
     private Date endDate;
     private String equipementRequired;
 
-    @ManyToMany(mappedBy = "activities")
-    private Set<Campsite> campsites;
-}
+    }

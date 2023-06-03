@@ -3,6 +3,8 @@ package tunisie.camp.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 import java.util.UUID;
@@ -13,9 +15,9 @@ import java.util.UUID;
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private UUID product_id;
+    private long product_id;
     private String productName;
     private String productType;
     private double productPrice;
@@ -25,10 +27,5 @@ public class Product {
     private double productPromotion;
     private Equipment equipmentType;
 
-    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
-    private Payment payment;
-
-    @ManyToMany(mappedBy = "activities")
-    private Set<User> user;
 
 }

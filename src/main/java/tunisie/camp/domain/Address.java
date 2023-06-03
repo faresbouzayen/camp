@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-@Data
 @AllArgsConstructor
+@Data
 @NoArgsConstructor
 @Entity
 public class Address {
@@ -19,4 +19,7 @@ public class Address {
     private String state;
     private String postalcode;
     private String country;
-}
+
+
+
+   }

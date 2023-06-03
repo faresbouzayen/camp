@@ -6,11 +6,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Reclamation {
     @Id
@@ -24,7 +24,6 @@ public class Reclamation {
     private Date resolutionDate;
     private String response;
 
-    @ManyToMany(mappedBy = "reclamations")
-    private Set<User> users;
+
 
 }
