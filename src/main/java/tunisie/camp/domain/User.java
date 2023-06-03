@@ -24,4 +24,15 @@ public class User {
     private String phone;
     private Role userRole;
 
+    @ManyToMany(mappedBy = "users")
+    private Set<Forum> forums = new HashSet<Forum>();
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Product> products = new HashSet<Product>();
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Reclamation> reclamations = new HashSet<Reclamation>();
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Campsite> campsites = new HashSet<Campsite>();
 }

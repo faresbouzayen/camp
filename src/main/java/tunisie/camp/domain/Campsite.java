@@ -25,4 +25,19 @@ public class Campsite {
     private String campsiteAddress;
     private Date availableCampsiteDates;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "campsite_user",
+    joinColumns = {@JoinColumn(name = "campsite_id")},
+    inverseJoinColumns = {@JoinColumn(name = "id")})
+    private Set<User> users = new HashSet<User>();
+
+    @ManyToMany(mappedBy = "campsites")
+    private Set<Activity> activities = new HashSet<Activity>();
+
+    @OneToOne(mappedBy = "campsite")
+    private Payment payment;
+
+    @OneToOne(mappedBy = "campsite")
+    private Weather weather;
+
 }

@@ -22,5 +22,16 @@ public class Payment {
     private String payerName;
     private String receiptUrl;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "pro_id")
+    private Product product;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "add_id")
+    private Address address;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "camp_id")
+    private Campsite campsite;
 
 }

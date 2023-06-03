@@ -27,5 +27,13 @@ public class Product {
     private double productPromotion;
     private Equipment equipmentType;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "product_user",
+    joinColumns = {@JoinColumn(name = "product_id")},
+    inverseJoinColumns = {@JoinColumn(name = "id")})
+    private Set<User> users = new HashSet<User>();
+
+    @OneToOne(mappedBy = "product")
+    private Payment payment;
 
 }

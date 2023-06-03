@@ -22,4 +22,8 @@ public class Weather {
     private Date sunriseTime;
     private Date sunsetTime;
     private double humidity;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "camp_id")
+    private Campsite campsite;
 }

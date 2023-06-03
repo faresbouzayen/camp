@@ -24,6 +24,11 @@ public class Reclamation {
     private Date resolutionDate;
     private String response;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "reclamation_user",
+    joinColumns = {@JoinColumn(name = "reclamation_id")},
+    inverseJoinColumns = {@JoinColumn(name = "id")})
+    private Set<User> users = new HashSet<User>();
 
 
 }

@@ -5,8 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-@AllArgsConstructor
+
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Address {
@@ -20,6 +21,7 @@ public class Address {
     private String postalcode;
     private String country;
 
-
+    //@OneToOne(mappedBy = "address")
+    //private Payment payment;
 
    }

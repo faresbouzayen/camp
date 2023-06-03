@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,5 +21,11 @@ public class Forum {
     private String forumName;
     private String topic;
     private Feedback feedbackType;
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "user_forum",
+    joinColumns = {@JoinColumn(name = "forum_id")},
+    inverseJoinColumns = {@JoinColumn(name = "id")})
+    private Set<User> users = new HashSet<User>();
 
 }

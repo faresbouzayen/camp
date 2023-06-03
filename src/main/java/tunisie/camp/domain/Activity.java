@@ -27,4 +27,10 @@ public class Activity {
     private Date endDate;
     private String equipementRequired;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "activity_campsite",
+    joinColumns = {@JoinColumn(name = "activity_id")},
+    inverseJoinColumns = {@JoinColumn(name = "id")})
+    private Set<Campsite> campsites = new HashSet<Campsite>();
+
     }
