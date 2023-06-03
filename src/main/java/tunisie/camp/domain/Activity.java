@@ -1,12 +1,12 @@
 package tunisie.camp.domain;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -27,4 +27,6 @@ public class Activity {
     private Date endDate;
     private String equipementRequired;
 
+    @ManyToMany(mappedBy = "activities")
+    private Set<Campsite> campsites;
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,4 +27,7 @@ public class Transport {
     private String OperatorName;
     private Date travelDuration;
 
+    @ManyToOne
+    @JoinColumn(name = "campsite_id")
+    private Campsite campsite;
 }

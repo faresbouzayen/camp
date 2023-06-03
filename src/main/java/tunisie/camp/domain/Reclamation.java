@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,4 +23,8 @@ public class Reclamation {
     private Date dateofreclamation;
     private Date resolutionDate;
     private String response;
+
+    @ManyToMany(mappedBy = "reclamations")
+    private Set<User> users;
+
 }

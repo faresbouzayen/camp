@@ -3,12 +3,14 @@ package tunisie.camp.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import javax.persistence.OneToOne;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,4 +28,9 @@ public class Payment {
     private String payerName;
     private Address billingAdress;
     private String receiptUrl;
+
+    @OneToOne(mappedBy = "payment", cascade = CascadeType.ALL)
+    private Campsite campsite;
+    @OneToOne(mappedBy = "payment", cascade = CascadeType.ALL)
+    private Product product;
 }

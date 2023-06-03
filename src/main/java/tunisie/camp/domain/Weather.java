@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,8 +20,11 @@ public class Weather {
     private double precipitation;
     private double windSpeed;
     private Date forecastDate;
-    private Campsite campsiteInfo;
     private Date sunriseTime;
     private Date sunsetTime;
     private double humidity;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "campsite_id")
+    private Campsite campsite;
 }
