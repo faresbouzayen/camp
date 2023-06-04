@@ -17,7 +17,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private long product_id;
+    private UUID product_id;
     private String productName;
     private String productType;
     private double productPrice;
