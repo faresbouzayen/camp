@@ -40,4 +40,10 @@ public class Campsite {
     @OneToOne(mappedBy = "campsite")
     private Weather weather;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "campsite_transport",
+    joinColumns = {@JoinColumn(name = "campsite_id")},
+    inverseJoinColumns = {@JoinColumn(name = "id")})
+    private Set<Transport> transports = new HashSet<Transport>();
+
 }

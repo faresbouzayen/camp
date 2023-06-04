@@ -21,7 +21,7 @@ public class Address {
     private String postalcode;
     private String country;
 
-    //@OneToOne(mappedBy = "address")
-    //private Payment payment;
+    @OneToOne(mappedBy = "address")
+    private Payment payment;
 
    }
