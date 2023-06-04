@@ -27,7 +27,7 @@ public class WeatherService {
         findOrThrow(weather_id);
         weather_repository.save(weather);
     }
-    private void removeWeatherById(long weather_id){
+    public void removeWeatherById(long weather_id){
         weather_repository.deleteById(weather_id);
     }
     private Weather findOrThrow(final long weather_id){
@@ -37,5 +37,6 @@ public class WeatherService {
                         () -> new NoSuchElementException("Weather wasn't found by id" + weather_id)
                 );
     }
+
 
 }
