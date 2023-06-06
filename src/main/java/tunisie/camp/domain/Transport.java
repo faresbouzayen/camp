@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -17,7 +18,7 @@ public class Transport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private long transport_id;
+    private UUID transport_id;
     private Transportation transportType;
     private String departureLocation;
     private String DestinationLocation;

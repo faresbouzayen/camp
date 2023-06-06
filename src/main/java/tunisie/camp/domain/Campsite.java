@@ -18,7 +18,7 @@ public class Campsite {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private long campsite_id;
+    private UUID campsite_id;
     private String campsiteName;
     private String campsiteLocation;
     private String campsiteCapacity;

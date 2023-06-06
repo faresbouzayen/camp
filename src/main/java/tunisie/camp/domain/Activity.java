@@ -18,7 +18,7 @@ public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private long activity_id;
+    private UUID activity_id;
     private String activityName;
     private String description;
     private int duration;
