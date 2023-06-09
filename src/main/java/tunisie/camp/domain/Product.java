@@ -3,6 +3,7 @@ package tunisie.camp.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.redis.core.RedisHash;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,11 +14,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@RedisHash
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private UUID product_id;
+    private UUID id;
     private String productName;
     private String productType;
     private double productPrice;

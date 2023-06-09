@@ -14,7 +14,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public class TransportDTO {
-    private UUID transport_id;
+    private UUID id;
     private Transportation transportType;
     private String departureLocation;
     private String DestinationLocation;

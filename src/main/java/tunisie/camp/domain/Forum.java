@@ -3,6 +3,7 @@ package tunisie.camp.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.redis.core.RedisHash;
 
 
 import javax.persistence.*;
@@ -14,11 +15,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@RedisHash
 public class Forum {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private UUID forum_id;
+    private UUID id;
     private String forumName;
     private String topic;
     private Feedback feedbackType;

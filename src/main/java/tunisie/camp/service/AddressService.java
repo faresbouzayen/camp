@@ -16,27 +16,27 @@ public class AddressService {
         this.address_repository = address_repository;
     }
 
-    public Address findOrThrow(final long address_id){
+    public Address findOrThrow(final UUID id){
         return address_repository
-                .findById(address_id)
+                .findById(id)
                 .orElseThrow(
-                        ()->new NoSuchElementException("No such id was found with this number + " + address_id)
+                        ()->new NoSuchElementException("No such id was found with this number + " + id)
                 );
     }
     public Iterable<Address> findAllAddresss(){
         return address_repository.findAll();
     }
-    public Address findAddressById(long address_id){
-        return findOrThrow(address_id);
+        public Address findAddressById(UUID id){
+        return findOrThrow(id);
     }
-    public void removeAddress(long address_id){
-        address_repository.deleteById(address_id);
+    public void removeAddress(UUID id){
+        address_repository.deleteById(id);
     }
     public Address addAddress(Address address){
         return address_repository.save(address);
     }
-    public void updateAddress(long address_id, Address address){
-        findAddressById(address_id);
+    public void updateAddress(UUID id, Address address){
+        findAddressById(id);
         address_repository.save(address);
     }
 }

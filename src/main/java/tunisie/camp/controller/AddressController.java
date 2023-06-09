@@ -11,12 +11,12 @@ import tunisie.camp.dto.AddressDTO;
 import tunisie.camp.service.AddressService;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v/addresses")
 public class AddressController {
     private final AddressService address_service;
     private final ModelMapper not_mapper;
@@ -46,15 +46,14 @@ public class AddressController {
         return toDto(address);
     }
 
-    @PutMapping("/{address_id}")
-    public void putAddress(@PathVariable("address_id") long address_id, @Validated @RequestBody AddressDTO address_dto){
-        if (address_id != address_dto.getAddress_id()) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"address id not found");
+    @PutMapping("/{id}")
+    public void putAddress(@PathVariable("id") UUID id, @Validated @RequestBody AddressDTO address_dto){
         var address_domain = toEntity(address_dto);
-        address_service.updateAddress(address_id,address_domain);
+        address_service.updateAddress(id,address_domain);
     }
 
-    @DeleteMapping("/{address_id}")
-    public void deleteAddressById(@PathVariable("address_id") long address_id){
-        address_service.removeAddress(address_id);
+    @DeleteMapping("/{id}")
+    public void deleteAddressById(@PathVariable("id") UUID id){
+        address_service.removeAddress(id);
     }
 }

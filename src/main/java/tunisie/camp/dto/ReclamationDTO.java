@@ -9,7 +9,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class ReclamationDTO {
-    private long reclamation_id;
+    private long id;
     private String reclamationName;
     private TypeReclamation reclamationNote;
     private String description;

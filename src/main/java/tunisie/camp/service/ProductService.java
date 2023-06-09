@@ -16,27 +16,27 @@ public class ProductService {
         this.product_repository = product_repository;
     }
 
-    public Product findOrThrow(final UUID product_id){
+    public Product findOrThrow(final UUID id){
         return product_repository
-                .findById(product_id)
+                .findById(id)
                 .orElseThrow(
-                        ()->new NoSuchElementException("No such id was found with this number + " + product_id)
+                        ()->new NoSuchElementException("No such id was found with this number + " + id)
                 );
     }
     public Iterable<Product> findAllProducts(){
         return product_repository.findAll();
     }
-    public Product findProductById(UUID product_id){
-        return findOrThrow(product_id);
+    public Product findProductById(UUID id){
+        return findOrThrow(id);
     }
-    public void removeProduct(UUID product_id){
-        product_repository.deleteById(product_id);
+    public void removeProduct(UUID id){
+        product_repository.deleteById(id);
     }
     public Product addProduct(Product product){
         return product_repository.save(product);
     }
-    public void updateProduct(UUID product_id, Product product){
-        findProductById(product_id);
+    public void updateProduct(UUID id, Product product){
+        findProductById(id);
         product_repository.save(product);
     }
 }

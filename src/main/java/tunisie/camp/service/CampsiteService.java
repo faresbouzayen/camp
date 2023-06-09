@@ -16,27 +16,27 @@ public class CampsiteService {
         this.campsite_repository = campsite_repository;
     }
 
-    public Campsite findOrThrow(final UUID campsite_id){
+    public Campsite findOrThrow(final UUID id){
         return campsite_repository
-                .findById(campsite_id)
+                .findById(id)
                 .orElseThrow(
-                        ()->new NoSuchElementException("No such id was found with this number + " + campsite_id)
+                        ()->new NoSuchElementException("No such id was found with this number + " + id)
                 );
     }
     public Iterable<Campsite> findAllCampsites(){
         return campsite_repository.findAll();
     }
-    public Campsite findCampsiteById(UUID campsite_id){
-        return findOrThrow(campsite_id);
+    public Campsite findCampsiteById(UUID id){
+        return findOrThrow(id);
     }
-    public void removeCampsite(UUID campsite_id){
-        campsite_repository.deleteById(campsite_id);
+    public void removeCampsite(UUID id){
+        campsite_repository.deleteById(id);
     }
     public Campsite addCampsite(Campsite campsite){
         return campsite_repository.save(campsite);
     }
-    public void updateCampsite(UUID campsite_id, Campsite campsite){
-        findCampsiteById(campsite_id);
+    public void updateCampsite(UUID id, Campsite campsite){
+        findCampsiteById(id);
         campsite_repository.save(campsite);
     }
 }

@@ -17,7 +17,6 @@ import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v/campsites")
 public class CampsiteController {
     private final CampsiteService campsite_service;
     private final ModelMapper not_mapper;
@@ -47,14 +46,14 @@ public class CampsiteController {
         return toDto(campsite);
     }
 
-    @PutMapping("/{campsite_id}")
-    public void putCampsite(@PathVariable("campsite_id") UUID campsite_id, @Validated @RequestBody CampsiteDTO campsite_dto){
+    @PutMapping("/{id}")
+    public void putCampsite(@PathVariable("id") UUID id, @Validated @RequestBody CampsiteDTO campsite_dto){
         var campsite_domain = toEntity(campsite_dto);
-        campsite_service.updateCampsite(campsite_id,campsite_domain);
+        campsite_service.updateCampsite(id,campsite_domain);
     }
 
-    @DeleteMapping("/{campsite_id}")
-    public void deleteCampsiteById(@PathVariable("campsite_id") UUID campsite_id){
-        campsite_service.removeCampsite(campsite_id);
+    @DeleteMapping("/{id}")
+    public void deleteCampsiteById(@PathVariable("id") UUID id){
+        campsite_service.removeCampsite(id);
     }
 }

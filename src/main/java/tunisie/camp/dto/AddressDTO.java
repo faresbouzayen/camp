@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class AddressDTO {
-    private long address_id;
+    private long id;
     private String street;
     private String city;
     private String state;

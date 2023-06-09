@@ -12,7 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class PaymentDTO {
-    private long payment_id;
+    private long id;
     private double paymentAmount;
     private Date paymentDate;
     private Product productInfo;

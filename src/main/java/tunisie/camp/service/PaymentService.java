@@ -16,27 +16,27 @@ public class PaymentService {
         this.payment_repository = payment_repository;
     }
 
-    public Payment findOrThrow(final Long payment_id){
+    public Payment findOrThrow(final UUID id){
         return payment_repository
-                .findById(payment_id)
+                .findById(id)
                 .orElseThrow(
-                        ()->new NoSuchElementException("No such id was found with this number + " + payment_id)
+                        ()->new NoSuchElementException("No such id was found with this number + " + id)
                 );
     }
     public Iterable<Payment> findAllPayments(){
         return payment_repository.findAll();
     }
-    public Payment findPaymentById(Long payment_id){
-        return findOrThrow(payment_id);
+    public Payment findPaymentById(UUID id){
+        return findOrThrow(id);
     }
-    public void removePayment(long payment_id){
-        payment_repository.deleteById(payment_id);
+    public void removePayment(UUID id){
+        payment_repository.deleteById(id);
     }
     public Payment addPayment(Payment payment){
         return payment_repository.save(payment);
     }
-    public void updatePayment(Long payment_id, Payment payment){
-        findPaymentById(payment_id);
+    public void updatePayment(UUID id, Payment payment){
+        findPaymentById(id);
         payment_repository.save(payment);
     }
 }

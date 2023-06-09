@@ -11,12 +11,12 @@ import tunisie.camp.dto.ReclamationDTO;
 import tunisie.camp.service.ReclamationService;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v/reclamations")
 public class ReclamationController {
     private final ReclamationService reclamation_service;
     private final ModelMapper not_mapper;
@@ -46,15 +46,14 @@ public class ReclamationController {
         return toDto(reclamation);
     }
 
-    @PutMapping("/{reclamation_id}")
-    public void putReclamation(@PathVariable("reclamation_id") long reclamation_id, @Validated @RequestBody ReclamationDTO reclamation_dto){
-        if (reclamation_id != reclamation_dto.getReclamation_id()) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"reclamation id not found");
+    @PutMapping("/{id}")
+    public void putReclamation(@PathVariable("id") UUID id, @Validated @RequestBody ReclamationDTO reclamation_dto){
         var reclamation_domain = toEntity(reclamation_dto);
-        reclamation_service.updateReclamation(reclamation_id,reclamation_domain);
+        reclamation_service.updateReclamation(id,reclamation_domain);
     }
 
-    @DeleteMapping("/{reclamation_id}")
-    public void deleteReclamationById(@PathVariable("reclamation_id") long reclamation_id){
-        reclamation_service.removeReclamation(reclamation_id);
+    @DeleteMapping("/{id}")
+    public void deleteReclamationById(@PathVariable("id") UUID id){
+        reclamation_service.removeReclamation(id);
     }
 }

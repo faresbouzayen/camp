@@ -17,7 +17,6 @@ import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v/forums")
 public class ForumController {
     private final ForumService forum_service;
     private final ModelMapper not_mapper;
@@ -47,14 +46,14 @@ public class ForumController {
         return toDto(forum);
     }
 
-    @PutMapping("/{forum_id}")
-    public void putForum(@PathVariable("forum_id") UUID forum_id, @Validated @RequestBody ForumDTO forum_dto){
+    @PutMapping("/{id}")
+    public void putForum(@PathVariable("id") UUID id, @Validated @RequestBody ForumDTO forum_dto){
         var forum_domain = toEntity(forum_dto);
-        forum_service.updateForum(forum_id,forum_domain);
+        forum_service.updateForum(id,forum_domain);
     }
 
-    @DeleteMapping("/{forum_id}")
-    public void deleteForumById(@PathVariable("forum_id") UUID forum_id){
-        forum_service.removeForum(forum_id);
+    @DeleteMapping("/{id}")
+    public void deleteForumById(@PathVariable("id") UUID id){
+        forum_service.removeForum(id);
     }
 }

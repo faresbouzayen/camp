@@ -15,7 +15,6 @@ import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v/transports")
 public class TransportController {
     private final TransportService transport_service;
     private final ModelMapper not_mapper;
@@ -45,14 +44,14 @@ public class TransportController {
         return toDto(transport);
     }
 
-    @PutMapping("/{transport_id}")
-    public void putTransport(@PathVariable("transport_id") UUID transport_id, @Validated @RequestBody TransportDTO transport_dto){
+    @PutMapping("/{id}")
+    public void putTransport(@PathVariable("id") UUID id, @Validated @RequestBody TransportDTO transport_dto){
         var transport_domain = toEntity(transport_dto);
-        transport_service.updateTransport(transport_id,transport_domain);
+        transport_service.updateTransport(id,transport_domain);
     }
 
-    @DeleteMapping("/{transport_id}")
-    public void deleteTransportById(@PathVariable("transport_id") UUID transport_id){
-        transport_service.removeTransportById(transport_id);
+    @DeleteMapping("/{id}")
+    public void deleteTransportById(@PathVariable("id") UUID id){
+        transport_service.removeTransportById(id);
     }
 }

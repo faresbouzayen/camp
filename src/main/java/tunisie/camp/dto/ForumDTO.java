@@ -10,7 +10,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public class ForumDTO {
-    private UUID forum_id;
+    private UUID id;
     private String forumName;
     private String topic;
     private Feedback feedbackType;

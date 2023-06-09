@@ -18,24 +18,24 @@ public class UserService {
     public User addUser(User user){
         return user_repository.save(user);
     }
-    public void updateUser(UUID user_id, User user){
-        findOrThrow(user_id);
+    public void updateUser(UUID id, User user){
+        findOrThrow(id);
         user_repository.save(user);
     }
     public Iterable<User> findAllUsers(){
         return user_repository.findAll();
     }
-    public User findUserById(UUID user_id){
-        return findOrThrow(user_id);
+    public User findUserById(UUID id){
+        return findOrThrow(id);
     }
-    public void removeUserById(UUID user_id){
-        user_repository.deleteById(user_id);
+    public void removeUserById(UUID id){
+        user_repository.deleteById(id);
     }
-    public User findOrThrow(final UUID user_id){
+    public User findOrThrow(final UUID id){
         return user_repository
-                .findById(user_id)
+                .findById(id)
                 .orElseThrow(
-                        () -> new NoSuchElementException("No User " + user_id + "was found" )
+                        () -> new NoSuchElementException("No User " + id + "was found" )
                 );
     }
 }

@@ -17,7 +17,6 @@ import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v/users")
 public class UserController {
     private final UserService user_service;
     private final ModelMapper not_mapper;
@@ -47,14 +46,14 @@ public class UserController {
         return toDto(user);
     }
 
-    @PutMapping("/{user_id}")
-    public void putUser(@PathVariable("user_id") UUID user_id, @Validated @RequestBody UserDTO user_dto){
+    @PutMapping("/{id}")
+    public void putUser(@PathVariable("id") UUID id, @Validated @RequestBody UserDTO user_dto){
         var user_domain = toEntity(user_dto);
-        user_service.updateUser(user_id,user_domain);
+        user_service.updateUser(id,user_domain);
     }
 
-    @DeleteMapping("/{user_id}")
-    public void deleteUserById(@PathVariable("user_id") UUID user_id){
-        user_service.removeUserById(user_id);
+    @DeleteMapping("/{id}")
+    public void deleteUserById(@PathVariable("id") UUID id){
+        user_service.removeUserById(id);
     }
 }

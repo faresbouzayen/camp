@@ -9,7 +9,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public class ProductDTO {
-    private UUID product_id;
+    private UUID id;
     private String productName;
     private String productType;
     private double productPrice;

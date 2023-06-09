@@ -17,7 +17,6 @@ import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v/products")
 public class ProductController {
     private final ProductService product_service;
     private final ModelMapper not_mapper;
@@ -47,14 +46,14 @@ public class ProductController {
         return toDto(product);
     }
 
-    @PutMapping("/{product_id}")
-    public void putProduct(@PathVariable("product_id") UUID product_id, @Validated @RequestBody ProductDTO product_dto){
+    @PutMapping("/{id}")
+    public void putProduct(@PathVariable("id") UUID id, @Validated @RequestBody ProductDTO product_dto){
         var product_domain = toEntity(product_dto);
-        product_service.updateProduct(product_id,product_domain);
+        product_service.updateProduct(id,product_domain);
     }
 
-    @DeleteMapping("/{product_id}")
-    public void deleteProductById(@PathVariable("product_id") UUID product_id){
-        product_service.removeProduct(product_id);
+    @DeleteMapping("/{id}")
+    public void deleteProductById(@PathVariable("id") UUID id){
+        product_service.removeProduct(id);
     }
 }

@@ -11,12 +11,12 @@ import tunisie.camp.dto.PaymentDTO;
 import tunisie.camp.service.PaymentService;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v/payments")
 public class PaymentController {
     private final PaymentService payment_service;
     private final ModelMapper not_mapper;
@@ -46,15 +46,14 @@ public class PaymentController {
         return toDto(payment);
     }
 
-    @PutMapping("/{payment_id}")
-    public void putPayment(@PathVariable("payment_id") long payment_id, @Validated @RequestBody PaymentDTO payment_dto){
-        if (payment_id != payment_dto.getPayment_id()) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"payment id not found");
+    @PutMapping("/{id}")
+    public void putPayment(@PathVariable("id") UUID id, @Validated @RequestBody PaymentDTO payment_dto){
         var payment_domain = toEntity(payment_dto);
-        payment_service.updatePayment(payment_id,payment_domain);
+        payment_service.updatePayment(id,payment_domain);
     }
 
-    @DeleteMapping("/{payment_id}")
-    public void deletePaymentById(@PathVariable("payment_id") long payment_id){
-        payment_service.removePayment(payment_id);
+    @DeleteMapping("/{id}")
+    public void deletePaymentById(@PathVariable("id") UUID id){
+        payment_service.removePayment(id);
     }
 }

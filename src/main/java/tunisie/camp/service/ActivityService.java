@@ -16,27 +16,27 @@ public class ActivityService {
         this.activity_repository = activity_repository;
     }
 
-    public Activity findOrThrow(final UUID activity_id){
+    public Activity findOrThrow(final UUID id){
         return activity_repository
-                .findById(activity_id)
+                .findById(id)
                 .orElseThrow(
-                        ()->new NoSuchElementException("No such id was found with this number + " + activity_id)
+                        ()->new NoSuchElementException("No such id was found with this number + " + id)
                 );
     }
     public Iterable<Activity> findAllActivitys(){
         return activity_repository.findAll();
     }
-    public Activity findActivityById(UUID activity_id){
-        return findOrThrow(activity_id);
+    public Activity findActivityById(UUID id){
+        return findOrThrow(id);
     }
-    public void removeActivity(UUID activity_id){
-        activity_repository.deleteById(activity_id);
+    public void removeActivity(UUID id){
+        activity_repository.deleteById(id);
     }
     public Activity addActivity(Activity activity){
         return activity_repository.save(activity);
     }
-    public void updateActivity(UUID activity_id, Activity activity){
-        findActivityById(activity_id);
+    public void updateActivity(UUID id, Activity activity){
+        findActivityById(id);
         activity_repository.save(activity);
     }
 }

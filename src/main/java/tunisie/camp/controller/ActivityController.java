@@ -17,7 +17,6 @@ import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v/activities")
 public class ActivityController {
     private final ActivityService activity_service;
     private final ModelMapper not_mapper;
@@ -47,14 +46,14 @@ public class ActivityController {
         return toDto(activity);
     }
 
-    @PutMapping("/{activity_id}")
-    public void putActivity(@PathVariable("activity_id") UUID activity_id, @Validated @RequestBody ActivityDTO activity_dto){
+    @PutMapping("/{id}")
+    public void putActivity(@PathVariable("id") UUID id, @Validated @RequestBody ActivityDTO activity_dto){
         var activity_domain = toEntity(activity_dto);
-        activity_service.updateActivity(activity_id,activity_domain);
+        activity_service.updateActivity(id,activity_domain);
     }
 
-    @DeleteMapping("/{activity_id}")
-    public void deleteActivityById(@PathVariable("activity_id") UUID activity_id){
-        activity_service.removeActivity(activity_id);
+    @DeleteMapping("/{id}")
+    public void deleteActivityById(@PathVariable("id") UUID id){
+        activity_service.removeActivity(id);
     }
 }

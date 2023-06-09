@@ -15,29 +15,29 @@ public class TransportService {
     public TransportService(TransportRepository transport_repository){
         this.transport_repository = transport_repository;
     }
-    public Transport addTransport(Transport transport_id){
-        return transport_repository.save(transport_id);
+    public Transport addTransport(Transport id){
+        return transport_repository.save(id);
     }
-    public Transport updateTransport(UUID transport_id, Transport transport){
-        findOrThrow(transport_id);
+    public Transport updateTransport(UUID id, Transport transport){
+        findOrThrow(id);
         return transport_repository.save(transport);
     }
 
-    public Transport findOrThrow(final UUID transport_id){
+    public Transport findOrThrow(final UUID id){
         return transport_repository
-                .findById(transport_id)
+                .findById(id)
                 .orElseThrow(
-                        ()-> new NoSuchElementException("No transport was found with this id = " + transport_id)
+                        ()-> new NoSuchElementException("No transport was found with this id = " + id)
                 );
     }
     public Iterable<Transport> findAllTransports(){
         return transport_repository.findAll();
     }
-    public Transport findTransportById(UUID transport_id){
-        return findOrThrow(transport_id);
+    public Transport findTransportById(UUID id){
+        return findOrThrow(id);
     }
-    public void removeTransportById(UUID transport_id){
-        transport_repository.deleteById(transport_id);
+    public void removeTransportById(UUID id){
+        transport_repository.deleteById(id);
     }
 
 }

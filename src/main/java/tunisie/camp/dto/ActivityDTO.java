@@ -11,7 +11,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public class ActivityDTO {
-    private UUID activity_id;
+    private UUID id;
     private String activityName;
     private String description;
     private int duration;

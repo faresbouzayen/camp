@@ -3,6 +3,7 @@ package tunisie.camp.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,11 +15,12 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@RedisHash
 public class Transport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private UUID transport_id;
+    private UUID id;
     private Transportation transportType;
     private String departureLocation;
     private String DestinationLocation;

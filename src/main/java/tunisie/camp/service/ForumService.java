@@ -16,27 +16,27 @@ public class ForumService {
         this.forum_repository = forum_repository;
     }
 
-    public Forum findOrThrow(final UUID forum_id){
+    public Forum findOrThrow(final UUID id){
         return forum_repository
-                .findById(forum_id)
+                .findById(id)
                 .orElseThrow(
-                        ()->new NoSuchElementException("No such id was found with this number + " + forum_id)
+                        ()->new NoSuchElementException("No such id was found with this number + " + id)
                 );
     }
     public Iterable<Forum> findAllForums(){
         return forum_repository.findAll();
     }
-    public Forum findForumById(UUID forum_id){
-        return findOrThrow(forum_id);
+    public Forum findForumById(UUID id){
+        return findOrThrow(id);
     }
-    public void removeForum(UUID forum_id){
-        forum_repository.deleteById(forum_id);
+    public void removeForum(UUID id){
+        forum_repository.deleteById(id);
     }
     public Forum addForum(Forum forum){
         return forum_repository.save(forum);
     }
-    public void updateForum(UUID forum_id, Forum forum){
-        findForumById(forum_id);
+    public void updateForum(UUID id, Forum forum){
+        findForumById(id);
         forum_repository.save(forum);
     }
 }
