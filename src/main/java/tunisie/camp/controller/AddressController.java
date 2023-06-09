@@ -39,20 +39,20 @@ public class AddressController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping("/adresses")
+    @PostMapping("/addresses")
     public AddressDTO postAddress(@Validated @RequestBody AddressDTO address_dto){
         var entity = toEntity(address_dto);
         var address = address_service.addAddress(entity);
         return toDto(address);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/addresses/{id}")
     public void putAddress(@PathVariable("id") UUID id, @Validated @RequestBody AddressDTO address_dto){
         var address_domain = toEntity(address_dto);
         address_service.updateAddress(id,address_domain);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/addresses/{id}")
     public void deleteAddressById(@PathVariable("id") UUID id){
         address_service.removeAddress(id);
     }
