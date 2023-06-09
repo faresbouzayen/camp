@@ -28,7 +28,7 @@ public class AddressController {
         return not_mapper.map(addressDTO, Address.class);
     }
 
-    @GetMapping
+    @GetMapping("/addresses")
     public List<AddressDTO> getAddresss(){
         var address_list = StreamSupport
                 .stream(address_service.findAllAddresss().spliterator(), false)
@@ -39,7 +39,7 @@ public class AddressController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/adresses")
     public AddressDTO postAddress(@Validated @RequestBody AddressDTO address_dto){
         var entity = toEntity(address_dto);
         var address = address_service.addAddress(entity);
