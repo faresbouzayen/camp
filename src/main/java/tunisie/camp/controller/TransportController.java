@@ -26,7 +26,7 @@ public class TransportController {
         return not_mapper.map(transportDTO, Transport.class);
     }
 
-    @GetMapping
+    @GetMapping("/transports")
     public List<TransportDTO> getTransports(){
         var transport_list = StreamSupport
                 .stream(transport_service.findAllTransports().spliterator(), false)
@@ -37,20 +37,20 @@ public class TransportController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/transports")
     public TransportDTO postTransport(@Validated @RequestBody TransportDTO transport_dto){
         var entity = toEntity(transport_dto);
         var transport = transport_service.addTransport(entity);
         return toDto(transport);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/transports/{id}")
     public void putTransport(@PathVariable("id") UUID id, @Validated @RequestBody TransportDTO transport_dto){
         var transport_domain = toEntity(transport_dto);
         transport_service.updateTransport(id,transport_domain);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/transports/{id}")
     public void deleteTransportById(@PathVariable("id") UUID id){
         transport_service.removeTransportById(id);
     }

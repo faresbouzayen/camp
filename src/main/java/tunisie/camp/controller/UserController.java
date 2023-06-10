@@ -28,7 +28,7 @@ public class UserController {
         return not_mapper.map(userDTO, User.class);
     }
 
-    @GetMapping
+    @GetMapping("/users")
     public List<UserDTO> getUsers(){
         var user_list = StreamSupport
                 .stream(user_service.findAllUsers().spliterator(), false)
@@ -39,20 +39,20 @@ public class UserController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/users")
     public UserDTO postUser(@Validated @RequestBody UserDTO user_dto){
         var entity = toEntity(user_dto);
         var user = user_service.addUser(entity);
         return toDto(user);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/users/{id}")
     public void putUser(@PathVariable("id") UUID id, @Validated @RequestBody UserDTO user_dto){
         var user_domain = toEntity(user_dto);
         user_service.updateUser(id,user_domain);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/users/{id}")
     public void deleteUserById(@PathVariable("id") UUID id){
         user_service.removeUserById(id);
     }

@@ -8,6 +8,5 @@ import tunisie.camp.domain.Payment;
 import java.util.UUID;
 
 @Repository
-@RepositoryRestResource(path="payments")
 public interface PaymentRepository extends CrudRepository<Payment, UUID> {
 }

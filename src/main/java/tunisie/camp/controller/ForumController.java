@@ -28,7 +28,7 @@ public class ForumController {
         return not_mapper.map(forumDTO, Forum.class);
     }
 
-    @GetMapping
+    @GetMapping("/forums")
     public List<ForumDTO> getForums(){
         var forum_list = StreamSupport
                 .stream(forum_service.findAllForums().spliterator(), false)
@@ -39,20 +39,20 @@ public class ForumController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/forums")
     public ForumDTO postForum(@Validated @RequestBody ForumDTO forum_dto){
         var entity = toEntity(forum_dto);
         var forum = forum_service.addForum(entity);
         return toDto(forum);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/forums/{id}")
     public void putForum(@PathVariable("id") UUID id, @Validated @RequestBody ForumDTO forum_dto){
         var forum_domain = toEntity(forum_dto);
         forum_service.updateForum(id,forum_domain);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/forums/{id}")
     public void deleteForumById(@PathVariable("id") UUID id){
         forum_service.removeForum(id);
     }

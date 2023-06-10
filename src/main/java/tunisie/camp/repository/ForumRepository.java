@@ -7,6 +7,5 @@ import tunisie.camp.domain.Forum;
 
 import java.util.UUID;
 @Repository
-@RepositoryRestResource(path="payments")
 public interface ForumRepository extends CrudRepository<Forum, UUID> {
 }

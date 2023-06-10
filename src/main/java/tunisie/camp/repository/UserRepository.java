@@ -7,6 +7,5 @@ import tunisie.camp.domain.User;
 
 import java.util.UUID;
 @Repository
-@RepositoryRestResource(path="users")
 public interface UserRepository extends CrudRepository<User, UUID> {
 }

@@ -28,7 +28,7 @@ public class ProductController {
         return not_mapper.map(productDTO, Product.class);
     }
 
-    @GetMapping
+    @GetMapping("/products")
     public List<ProductDTO> getProducts(){
         var product_list = StreamSupport
                 .stream(product_service.findAllProducts().spliterator(), false)
@@ -39,20 +39,20 @@ public class ProductController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/products")
     public ProductDTO postProduct(@Validated @RequestBody ProductDTO product_dto){
         var entity = toEntity(product_dto);
         var product = product_service.addProduct(entity);
         return toDto(product);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/products/{id}")
     public void putProduct(@PathVariable("id") UUID id, @Validated @RequestBody ProductDTO product_dto){
         var product_domain = toEntity(product_dto);
         product_service.updateProduct(id,product_domain);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/products/{id}")
     public void deleteProductById(@PathVariable("id") UUID id){
         product_service.removeProduct(id);
     }

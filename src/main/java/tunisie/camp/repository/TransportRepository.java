@@ -7,6 +7,5 @@ import tunisie.camp.domain.Transport;
 
 import java.util.UUID;
 @Repository
-@RepositoryRestResource(path="transports")
 public interface TransportRepository extends CrudRepository<Transport, UUID> {
 }

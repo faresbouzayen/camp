@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 import tunisie.camp.domain.Address;
 
 import java.util.UUID;
-
 @Repository
-@RepositoryRestResource(path="addresses")
 public interface AddressRepository extends CrudRepository<Address, UUID> {
 }

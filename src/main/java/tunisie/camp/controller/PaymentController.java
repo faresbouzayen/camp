@@ -28,7 +28,7 @@ public class PaymentController {
         return not_mapper.map(paymentDTO, Payment.class);
     }
 
-    @GetMapping
+    @GetMapping("/payments")
     public List<PaymentDTO> getPayments(){
         var payment_list = StreamSupport
                 .stream(payment_service.findAllPayments().spliterator(), false)
@@ -39,20 +39,20 @@ public class PaymentController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/payments")
     public PaymentDTO postPayment(@Validated @RequestBody PaymentDTO payment_dto){
         var entity = toEntity(payment_dto);
         var payment = payment_service.addPayment(entity);
         return toDto(payment);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/payments/{id}")
     public void putPayment(@PathVariable("id") UUID id, @Validated @RequestBody PaymentDTO payment_dto){
         var payment_domain = toEntity(payment_dto);
         payment_service.updatePayment(id,payment_domain);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/payments/{id}")
     public void deletePaymentById(@PathVariable("id") UUID id){
         payment_service.removePayment(id);
     }

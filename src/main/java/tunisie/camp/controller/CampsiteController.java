@@ -28,7 +28,7 @@ public class CampsiteController {
         return not_mapper.map(campsiteDTO, Campsite.class);
     }
 
-    @GetMapping
+    @GetMapping("/campsites")
     public List<CampsiteDTO> getCampsites(){
         var campsite_list = StreamSupport
                 .stream(campsite_service.findAllCampsites().spliterator(), false)
@@ -39,20 +39,20 @@ public class CampsiteController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/campsites")
     public CampsiteDTO postCampsite(@Validated @RequestBody CampsiteDTO campsite_dto){
         var entity = toEntity(campsite_dto);
         var campsite = campsite_service.addCampsite(entity);
         return toDto(campsite);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("campsites/{id}")
     public void putCampsite(@PathVariable("id") UUID id, @Validated @RequestBody CampsiteDTO campsite_dto){
         var campsite_domain = toEntity(campsite_dto);
         campsite_service.updateCampsite(id,campsite_domain);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("campsites/{id}")
     public void deleteCampsiteById(@PathVariable("id") UUID id){
         campsite_service.removeCampsite(id);
     }

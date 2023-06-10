@@ -7,6 +7,5 @@ import tunisie.camp.domain.Reclamation;
 
 import java.util.UUID;
 @Repository
-@RepositoryRestResource(path="reclamations")
 public interface ReclamationRepository extends CrudRepository<Reclamation, UUID> {
 }

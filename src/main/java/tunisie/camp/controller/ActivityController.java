@@ -28,8 +28,8 @@ public class ActivityController {
         return not_mapper.map(activityDTO, Activity.class);
     }
 
-    @GetMapping
-    public List<ActivityDTO> getActivitys(){
+    @GetMapping("/activities")
+    public List<ActivityDTO> getActivities(){
         var activity_list = StreamSupport
                 .stream(activity_service.findAllActivitys().spliterator(), false)
                 .collect(Collectors.toList());
@@ -39,20 +39,20 @@ public class ActivityController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/activities")
     public ActivityDTO postActivity(@Validated @RequestBody ActivityDTO activity_dto){
         var entity = toEntity(activity_dto);
         var activity = activity_service.addActivity(entity);
         return toDto(activity);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/activities/{id}")
     public void putActivity(@PathVariable("id") UUID id, @Validated @RequestBody ActivityDTO activity_dto){
         var activity_domain = toEntity(activity_dto);
         activity_service.updateActivity(id,activity_domain);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("activities/{id}")
     public void deleteActivityById(@PathVariable("id") UUID id){
         activity_service.removeActivity(id);
     }

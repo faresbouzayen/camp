@@ -3,11 +3,12 @@ package tunisie.camp.dto;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class AddressDTO {
-    private long id;
+    private UUID id;
     private String street;
     private String city;
     private String state;

@@ -28,7 +28,7 @@ public class ReclamationController {
         return not_mapper.map(reclamationDTO, Reclamation.class);
     }
 
-    @GetMapping
+    @GetMapping("/reclamations")
     public List<ReclamationDTO> getReclamations(){
         var reclamation_list = StreamSupport
                 .stream(reclamation_service.findAllReclamations().spliterator(), false)
@@ -39,20 +39,20 @@ public class ReclamationController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping
+    @PostMapping("/reclamations")
     public ReclamationDTO postReclamation(@Validated @RequestBody ReclamationDTO reclamation_dto){
         var entity = toEntity(reclamation_dto);
         var reclamation = reclamation_service.addReclamation(entity);
         return toDto(reclamation);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/reclamations/{id}")
     public void putReclamation(@PathVariable("id") UUID id, @Validated @RequestBody ReclamationDTO reclamation_dto){
         var reclamation_domain = toEntity(reclamation_dto);
         reclamation_service.updateReclamation(id,reclamation_domain);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/reclamations/{id}")
     public void deleteReclamationById(@PathVariable("id") UUID id){
         reclamation_service.removeReclamation(id);
     }

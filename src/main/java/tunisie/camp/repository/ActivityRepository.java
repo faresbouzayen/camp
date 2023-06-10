@@ -7,6 +7,5 @@ import tunisie.camp.domain.Activity;
 
 import java.util.UUID;
 @Repository
-@RepositoryRestResource(path="activities")
 public interface ActivityRepository extends CrudRepository<Activity, UUID> {
 }

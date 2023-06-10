@@ -5,11 +5,12 @@ import tunisie.camp.domain.TypeReclamation;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class ReclamationDTO {
-    private long id;
+    private UUID id;
     private String reclamationName;
     private TypeReclamation reclamationNote;
     private String description;

@@ -8,11 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class PaymentDTO {
-    private long id;
+    private UUID id;
     private double paymentAmount;
     private Date paymentDate;
     private Product productInfo;

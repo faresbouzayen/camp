@@ -8,6 +8,5 @@ import tunisie.camp.domain.Weather;
 import java.util.UUID;
 
 @Repository
-@RepositoryRestResource(path="weathers")
 public interface WeatherRepository extends CrudRepository<Weather, UUID> {
 }
