@@ -10,5 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthenticationResponse implements Serializable {
-    private String token;
+
+  private String token;
 }
